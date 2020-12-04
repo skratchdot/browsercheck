@@ -1,3 +1,4 @@
 .ignore
-lib
+build
+dist
 node_modules

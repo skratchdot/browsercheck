@@ -1,7 +1,13 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
+    "target": "ES2015",
     "module": "CommonJS",
-    "outDir": "./lib/cjs"
-  }
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist/cjs",
+    "declaration": true,
+    "moduleResolution": "node"
+  },
+  "include": ["./src/lib", "./src/cli"]
 }

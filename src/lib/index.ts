@@ -1,5 +1,6 @@
 import { transformAsync } from '@babel/core';
 import { diffChars } from 'diff';
+import presetEnv from '@babel/preset-env';
 
 export const validate = async (input: string, targets: string) => {
   let results: any = {
@@ -27,7 +28,7 @@ export const validate = async (input: string, targets: string) => {
       ...transformOptions,
       presets: [
         [
-          '@babel/preset-env',
+          presetEnv,
           {
             targets,
           },

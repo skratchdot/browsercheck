@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "ES2020",
-    "strict": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./lib/esm",
-    "declaration": true,
-    "moduleResolution": "node"
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["./src"]
+  "include": ["src"]
 }
