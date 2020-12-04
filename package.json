@@ -4,9 +4,10 @@
   "description": "a tool to check your scripts for browser compatibility",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && npm run tsc",
+    "build": "npm run clean && npm run format && npm run tsc",
     "clean": "rimraf lib",
-    "prepublish": "npm run tsc",
+    "format": "prettier --write .",
+    "prepublish": "npm run build",
     "test": "jest",
     "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json"
   },
