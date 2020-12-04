@@ -2,13 +2,13 @@
 
 a tool to check your scripts for browser compatibility
 
-## installation
+## cli installation & usage
 
-coming soon
+install the tool globally using npm
 
-## usage
-
-### cli usage
+```bash
+npm install -g browercheck
+```
 
 check if `bundle.js` will "work" in ie 8
 
@@ -16,12 +16,20 @@ check if `bundle.js` will "work" in ie 8
 browsercheck validate --targets "ie 8" bundle.js
 ```
 
-### node usage
+### node installation & usage
+
+save the library to your dependencies using npm
+
+```bash
+npm install --save browsercheck
+```
 
 check if some javascript is valid in ie 8
 
+`index.js`:
+
 ```javascript
-const { validate } = require('');
+const { validate } = require('browsercheck');
 const result1 = validate('const life = 42;', 'ie 8');
 console.log(result1.valid); // false
 const result2 = validate('var life = 42;', 'ie 8');
