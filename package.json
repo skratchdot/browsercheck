@@ -2,7 +2,11 @@
   "name": "browsercheck",
   "version": "0.0.0",
   "description": "a tool to check your scripts for browser compatibility",
-  "main": "index.js",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "files": [
+    "lib/"
+  ],
   "scripts": {
     "build": "npm run clean && npm run format && npm run tsc",
     "clean": "rimraf lib",
