@@ -1,0 +1,47 @@
+{
+  "name": "browsercheck",
+  "version": "0.0.0",
+  "description": "a tool to check your scripts for browser compatibility",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && npm run tsc",
+    "clean": "rimraf lib",
+    "prepublish": "npm run tsc",
+    "test": "jest",
+    "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/skratchdot/browsercheck.git"
+  },
+  "keywords": [
+    "browser",
+    "caniuse",
+    "compatibility",
+    "browserlist",
+    "babel",
+    "preset-env"
+  ],
+  "author": "skratchdot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skratchdot/browsercheck/issues"
+  },
+  "homepage": "https://github.com/skratchdot/browsercheck#readme",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.12.7",
+    "@types/babel__core": "^7.1.12",
+    "@types/diff": "^4.0.2",
+    "@types/jest": "^26.0.16",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.2"
+  },
+  "dependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "diff": "^5.0.0"
+  }
+}
