@@ -5,9 +5,10 @@
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist/cjs",
+    "outDir": "./dist",
     "declaration": true,
     "moduleResolution": "node"
   },
-  "include": ["./src/lib", "./src/cli"]
+  "exclude": ["./src/index.tsx", "./src/app"],
+  "include": ["./src"]
 }

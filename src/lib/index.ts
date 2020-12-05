@@ -1,15 +1,45 @@
 import { transformAsync } from '@babel/core';
 import { diffChars } from 'diff';
 import presetEnv from '@babel/preset-env';
+import fs from 'fs';
 
-export const validate = async (input: string, targets: string) => {
+export const getTimes = (start: number, end: number) => ({
+  start,
+  end,
+  duration: end - start,
+});
+
+export const validateFile = async (file: string, targets: string) => new Promise((resolve) => {
+  const start = Date.now();
   let results: any = {
     valid: false,
+    targets,
+  };
+  fs.readFile(file, async (err, data) => {
+    if (err) {
+      results.error = err.message;
+    } else {
+      results = await validate(data.toString('utf8'), targets);
+    }
+    const end = Date.now();
+    return resolve({
+      ...results,
+      file,
+      validateFileTime: getTimes(start, end)
+    });
+  });
+
+});
+
+export const validate = async (input: string, targets: string) => {
+  const start = Date.now();
+  let results: any = {
+    valid: false,
+    targets,
     results: {
       input,
     },
   };
-  const start = Date.now();
   // https://babeljs.io/docs/en/options
   const transformOptions: any = {
     sourceType: 'unambiguous',
@@ -17,6 +47,8 @@ export const validate = async (input: string, targets: string) => {
     babelrcRoots: false,
     compact: false,
     configFile: false,
+    comments: true,
+    retainLines: true
   };
   try {
     const noTargets = await transformAsync(input, {
@@ -51,11 +83,7 @@ export const validate = async (input: string, targets: string) => {
   const end = Date.now();
   return {
     ...results,
-    times: {
-      start,
-      end,
-      duration: end - start,
-    },
+    validateTime: getTimes(start, end),
   };
 };
 

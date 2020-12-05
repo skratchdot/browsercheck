@@ -12,8 +12,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/skratchdot/browsercheck.git"
   },
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
+  "main": "./dist/index.js",
   "bin": {
     "browsercheck": "./cli.js"
   },
@@ -24,11 +23,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "npm run clean && npm run format && npm run tsc && react-scripts build",
-    "clean": "rimraf lib",
+    "clean": "rimraf dist build",
     "format": "prettier --write .",
     "prepublish": "npm run build",
     "test": "react-scripts test",
-    "tsc": "tsc -p tsconfig-cjs.json && tsc -p tsconfig-esm.json"
+    "tsc": "tsc -p tsconfig-cjs.json"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.12.7",
@@ -52,7 +51,8 @@
   "dependencies": {
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
-    "diff": "^5.0.0"
+    "diff": "^5.0.0",
+    "yargs": "^16.1.1"
   },
   "keywords": [
     "browser",

@@ -1,3 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-var cli = require('./dist/cjs/cli/index');
+var pkg = require('./package.json');
+var lib = require('./dist/cli/index');
+lib.cli(
+    process.argv.slice(2),
+    process.cwd(),
+    process.exit,
+    console.log,
+    pkg
+);
