@@ -58,11 +58,15 @@ coming soon
 - https://github.com/robatwilliams/es-compat
 - https://github.com/amilajack/eslint-plugin-compat
 - https://github.com/anandthakker/doiuse
+- https://browserslist.dev/
 
 ## ideas/todo
 
 - auto update cli
 - give a way to update the browserlist/caniuse db via cli
 - command "detect" that finds the "lowest" version of each browser is supported
-- should cli support an array of files, or only 1 file?
--
+- should cli support globs (similar usage to eslint, prettier, etc)?
+- look into preset-env, and why Promises are polyfilled in chrome 66
+- add browserslist output to results
+- improve demo site and docs
+- add info about caveats and edge-cases

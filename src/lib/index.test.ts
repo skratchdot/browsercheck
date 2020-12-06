@@ -59,4 +59,32 @@ describe('validate', () => {
     expect(result.error).toBeUndefined();
     expect(result.valid).toBe(true);
   });
+  it('should polyfill promises in chrome at versions < 67 or equal to 82. not sure if bug with preset-env or what', async () => {
+    let result;
+    // chrome 66
+    result = await validate('var a = Promise.resolve(1);', 'chrome 66');
+    expect(result.valid).toBe(false);
+    expect(result.error).toBeUndefined();
+    // chrome 67
+    result = await validate('var a = Promise.resolve(1);', 'chrome 67');
+    expect(result.valid).toBe(true);
+    expect(result.error).toBeUndefined();
+    // chrome 882
+    result = await validate('var a = Promise.resolve(1);', 'chrome 82');
+    expect(result.valid).toBe(false);
+    expect(result.error).toMatch('Unknown version 82 of chrome');
+  });
+  // chrome 4-89
+  (() => {
+    for (let chromeVersion = 4; chromeVersion < 90; chromeVersion++) {
+      const answer = chromeVersion >= 67 && chromeVersion !== 82;
+      it(`should chrome ${chromeVersion} polyfill promises? answer=${answer}`, async () => {
+        const result = await validate(
+          'var a = Promise.resolve(1);',
+          `chrome ${chromeVersion}`
+        );
+        expect(result.valid).toBe(answer);
+      });
+    }
+  })();
 });

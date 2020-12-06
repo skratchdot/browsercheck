@@ -9,27 +9,27 @@ export const getTimes = (start: number, end: number) => ({
   duration: end - start,
 });
 
-export const validateFile = async (file: string, targets: string) => new Promise((resolve) => {
-  const start = Date.now();
-  let results: any = {
-    valid: false,
-    targets,
-  };
-  fs.readFile(file, async (err, data) => {
-    if (err) {
-      results.error = err.message;
-    } else {
-      results = await validate(data.toString('utf8'), targets);
-    }
-    const end = Date.now();
-    return resolve({
-      ...results,
-      file,
-      validateFileTime: getTimes(start, end)
+export const validateFile = async (file: string, targets: string) =>
+  new Promise((resolve) => {
+    const start = Date.now();
+    let results: any = {
+      valid: false,
+      targets,
+    };
+    fs.readFile(file, async (err, data) => {
+      if (err) {
+        results.error = err.message;
+      } else {
+        results = await validate(data.toString('utf8'), targets);
+      }
+      const end = Date.now();
+      return resolve({
+        ...results,
+        file,
+        validateFileTime: getTimes(start, end),
+      });
     });
   });
-
-});
 
 export const validate = async (input: string, targets: string) => {
   const start = Date.now();
@@ -48,7 +48,7 @@ export const validate = async (input: string, targets: string) => {
     compact: false,
     configFile: false,
     comments: true,
-    retainLines: true
+    retainLines: true,
   };
   try {
     const noTargets = await transformAsync(input, {
@@ -63,6 +63,12 @@ export const validate = async (input: string, targets: string) => {
           presetEnv,
           {
             targets,
+            useBuiltIns: 'usage',
+            corejs: 3,
+            /*
+            loose: true,
+            debug: true
+            */
           },
         ],
       ],
