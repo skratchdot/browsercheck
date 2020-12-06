@@ -1,6 +1,7 @@
 import { transformAsync } from '@babel/core';
 import { diffChars } from 'diff';
 import presetEnv from '@babel/preset-env';
+import browserslist from 'browserslist';
 import fs from 'fs';
 
 export const getTimes = (start: number, end: number) => ({
@@ -83,6 +84,10 @@ export const validate = async (input: string, targets: string) => {
     // but i think the following line might be quicker for super long strings :shrug:
     results.valid =
       diff.length === 1 && diff[0].added !== true && diff[0].removed !== true;
+
+    // browserlist stats
+    results.browserslist = browserslist(targets);
+    results.browserslistCoverage = browserslist.coverage(browserslist(targets));
   } catch (err) {
     results.error = err.message;
   }

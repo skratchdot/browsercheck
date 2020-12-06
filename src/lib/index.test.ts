@@ -26,6 +26,12 @@ describe('validate', () => {
         },
       ]
     `);
+    expect(result.browserslist).toMatchInlineSnapshot(`
+      Array [
+        "ie 8",
+      ]
+    `);
+    expect(typeof result.browserslistCoverage).toBe('number');
   });
   it('should handle invalid ie8 scripts', async () => {
     const result = await validate('const a = 4;', 'ie 8');
@@ -52,6 +58,12 @@ describe('validate', () => {
         },
       ]
     `);
+    expect(result.browserslist).toMatchInlineSnapshot(`
+      Array [
+        "ie 8",
+      ]
+    `);
+    expect(typeof result.browserslistCoverage).toBe('number');
   });
   it('should set inputMatchesNoTargets=false when spacing is changed', async () => {
     const result = await validate('const    a = () => `neat stuff`', 'node 10');
