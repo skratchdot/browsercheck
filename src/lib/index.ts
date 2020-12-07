@@ -1,5 +1,5 @@
 import { transformAsync } from '@babel/core';
-import { diffChars } from 'diff';
+import fastDiff from 'fast-diff';
 import presetEnv from '@babel/preset-env';
 import browserslist from 'browserslist';
 import fs from 'fs';
@@ -76,14 +76,8 @@ export const validate = async (input: string, targets: string) => {
     });
     results.results.withTargets = withTargets;
 
-    const diff = diffChars(noTargets?.code || '', withTargets?.code || '');
-    results.diff = diff;
-
-    // for "valid", we could just:
-    // noTargets?.code === withTargets?.code
-    // but i think the following line might be quicker for super long strings :shrug:
-    results.valid =
-      diff.length === 1 && diff[0].added !== true && diff[0].removed !== true;
+    results.diff = fastDiff(noTargets?.code || '', withTargets?.code || '');
+    results.valid = noTargets?.code === withTargets?.code;
 
     // browserlist stats
     results.browserslist = browserslist(targets);

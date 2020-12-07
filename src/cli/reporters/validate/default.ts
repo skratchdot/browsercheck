@@ -24,16 +24,17 @@ const defaultReporter = (stats: any, log: any) => {
       let charRemoved = 0;
       let charAdded = 0;
       let charSame = 0;
-      result.diff.forEach((d: any) => {
-        if (d.removed) {
+      result.diff.forEach((d: [number, string]) => {
+        const [diffType, value] = d;
+        if (diffType === -1) {
           removed++;
-          charRemoved += d.count;
-        } else if (d.added) {
+          charRemoved += value.length;
+        } else if (diffType === 1) {
           added++;
-          charAdded += d.count;
-        } else {
+          charAdded += value.length;
+        } else if (diffType === 0) {
           same++;
-          charSame += d.count;
+          charSame += value.length;
         }
       });
       log(`  [INVALID]`);

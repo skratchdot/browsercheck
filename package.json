@@ -53,7 +53,7 @@
     "@babel/preset-env": "^7.12.7",
     "browserslist": "^4.15.0",
     "core-js": "^3.8.1",
-    "diff": "^5.0.0",
+    "fast-diff": "^1.2.0",
     "yargs": "^16.1.1"
   },
   "keywords": [

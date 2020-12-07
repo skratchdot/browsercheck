@@ -4,6 +4,6 @@ import App from './app';
 
 test('renders the validate button', () => {
   render(<App />);
-  const buttonElement = screen.getByText(/validate/i);
+  const buttonElement = screen.getByTestId('validate-button');
   expect(buttonElement).toBeInTheDocument();
 });

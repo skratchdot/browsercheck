@@ -20,10 +20,10 @@ describe('validate', () => {
     expect(result.valid).toBe(true);
     expect(result.diff).toMatchInlineSnapshot(`
       Array [
-        Object {
-          "count": 10,
-          "value": "var a = 4;",
-        },
+        Array [
+          0,
+          "var a = 4;",
+        ],
       ]
     `);
     expect(result.browserslist).toMatchInlineSnapshot(`
@@ -40,22 +40,18 @@ describe('validate', () => {
     expect(result.valid).toBe(false);
     expect(result.diff).toMatchInlineSnapshot(`
       Array [
-        Object {
-          "added": undefined,
-          "count": 5,
-          "removed": true,
-          "value": "const",
-        },
-        Object {
-          "added": true,
-          "count": 3,
-          "removed": undefined,
-          "value": "var",
-        },
-        Object {
-          "count": 7,
-          "value": " a = 4;",
-        },
+        Array [
+          -1,
+          "const",
+        ],
+        Array [
+          1,
+          "var",
+        ],
+        Array [
+          0,
+          " a = 4;",
+        ],
       ]
     `);
     expect(result.browserslist).toMatchInlineSnapshot(`

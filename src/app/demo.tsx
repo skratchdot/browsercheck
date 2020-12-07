@@ -51,7 +51,9 @@ const Demo = () => {
         <li>
           Click the "validate" button:
           <br />
-          <button onClick={handleValidate}>validate</button>
+          <button data-testid="validate-button" onClick={handleValidate}>
+            validate
+          </button>
         </li>
         <li>
           View Results:
