@@ -1,0 +1,16 @@
+.header {
+  padding: 40px;
+  background-color: rgb(41, 121, 255);
+  color: white;
+  text-align: center;
+}
+
+.headerLink {
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.headerLink:hover {
+  text-decoration: underline;
+}

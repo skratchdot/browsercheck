@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { validate } from '../lib/index';
+import styles from './demo.module.css';
 
 const Result: React.FC<{ result: any }> = ({ result }) => {
   if (result) {
@@ -31,20 +32,33 @@ const Demo = () => {
     setResult(result);
   };
   return (
-    <div>
-      demo:
-      <h2>targets:</h2>
-      <input
-        type="text"
-        value={targets}
-        onChange={(e) => setTargets(e.target.value)}
-      />
-      <h2>code:</h2>
-      <textarea value={code} onChange={(e) => setCode(e.target.value)} />
-      <br />
-      <button onClick={handleValidate}>validate</button>
-      <br />
-      <Result result={result} />
+    <div className={styles.demo}>
+      <ol>
+        <li>
+          Enter a browserslist "targets" value:
+          <br />
+          <input
+            type="text"
+            value={targets}
+            onChange={(e) => setTargets(e.target.value)}
+          />
+        </li>
+        <li>
+          Enter some javascript code:
+          <br />
+          <textarea value={code} onChange={(e) => setCode(e.target.value)} />
+        </li>
+        <li>
+          Click the "validate" button:
+          <br />
+          <button onClick={handleValidate}>validate</button>
+        </li>
+        <li>
+          View Results:
+          <br />
+          <Result result={result} />
+        </li>
+      </ol>
     </div>
   );
 };

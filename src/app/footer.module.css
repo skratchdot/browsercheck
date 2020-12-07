@@ -1,0 +1,12 @@
+.footer {
+  padding: 40px;
+  background-color: rgb(33, 33, 33);
+  color: white;
+  text-align: center;
+}
+
+.footerLink {
+  color: white;
+  display: inline-block;
+  text-decoration: underline;
+}

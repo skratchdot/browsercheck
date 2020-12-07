@@ -1,0 +1,21 @@
+.demo {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.demo ol li {
+  margin-top: 20px;
+}
+
+.demo input {
+  width: 100%;
+}
+
+.demo textarea {
+  width: 100%;
+  min-height: 300px;
+}
+
+.demo button {
+  width: 100%;
+}
