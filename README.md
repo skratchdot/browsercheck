@@ -50,7 +50,12 @@ against your targets (there are of course caveats to this rule: for instance DOM
 
 ## why do you need this?
 
-coming soon
+webpack recommends not transpiling node_modules (for speed- and other reasons). sometimes the libraries you depend on
+do not support the same set of browsers your app does. when this happens- it's hard to detect which code in node_modules
+will "break" your site. the goal of this project is to help detect that scenario.
+
+once you discover the "culprits", you can edit your webpack config so you start transpiling those libs:
+https://github.com/webpack/webpack/issues/2031#issuecomment-219040479
 
 ## see also
 
@@ -71,3 +76,5 @@ coming soon
 - improve demo site and docs
 - add info about caveats and edge-cases
 - browser plugins/bookmarklets to "test" files in network tab
+- add debug module
+-
