@@ -1,9 +1,9 @@
 {
   "name": "@skratchdot/browsercheck",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "a tool to check your scripts for browser compatibility",
   "author": "skratchdot",
-  "homepage": "https://github.com/skratchdot/browsercheck",
+  "homepage": "https://projects.skratchdot.com/browsercheck/",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/skratchdot/browsercheck/issues"
