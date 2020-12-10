@@ -1,6 +1,7 @@
 import React from 'react';
-import { name, description, version, homepage } from '../../package.json';
+import { name, description, homepage } from '../../package.json';
 import GithubLogo from './github-logo';
+import cleanPackageName from '../lib/clean-package-name';
 import styles from './footer.module.css';
 
 const Footer = () => {
@@ -9,7 +10,7 @@ const Footer = () => {
       <p>Thanks for visiting!</p>
       <p>
         <a className={styles.footerLink} href={homepage}>
-          {name}
+          {cleanPackageName(name)}
         </a>
         &nbsp; is {description}
       </p>

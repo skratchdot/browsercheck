@@ -7,7 +7,7 @@ a tool to check your scripts for browser compatibility
 install the tool globally using npm
 
 ```bash
-npm install -g browercheck
+npm install -g @skratchdot/browsercheck
 ```
 
 check if `bundle.js` will "work" in ie 8

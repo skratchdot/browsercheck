@@ -1,4 +1,5 @@
 import yargs from 'yargs';
+import cleanPackageName from '../lib/clean-package-name';
 
 export const cli = (
   args: Array<any>,
@@ -12,7 +13,7 @@ export const cli = (
     .commandDir('cmds')
     .help('help')
     .alias('h', 'help')
-    .version(`${pkg.name} version ${pkg.version}`)
+    .version(`${cleanPackageName(pkg.name)} version ${pkg.version}`)
     .alias('v', 'version')
     .demandCommand(1, 'you need to specify a command to use')
     .strict()
