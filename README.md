@@ -21,7 +21,7 @@ browsercheck validate --targets "ie 8" bundle.js
 save the library to your dependencies using npm
 
 ```bash
-npm install --save browsercheck
+npm install -g @skratchdot/browsercheck
 ```
 
 check if some javascript is valid in ie 8
