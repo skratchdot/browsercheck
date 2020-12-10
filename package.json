@@ -24,6 +24,8 @@
     "start": "react-scripts start",
     "build": "npm run clean && npm run format && npm run tsc && react-scripts build",
     "clean": "rimraf dist build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "format": "prettier --write .",
     "prepublish": "npm run build",
     "test": "react-scripts test",
@@ -55,6 +57,7 @@
     "caniuse-lite": "^1.0.30001165",
     "core-js": "^3.8.1",
     "fast-diff": "^1.2.0",
+    "gh-pages": "^3.1.0",
     "yargs": "^16.1.1"
   },
   "keywords": [
