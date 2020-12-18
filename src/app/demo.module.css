@@ -5,6 +5,7 @@
 
 .demo ol li {
   margin-top: 20px;
+  list-style-type: none;
 }
 
 .demo input {

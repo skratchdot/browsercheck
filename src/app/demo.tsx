@@ -1,22 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
 import { validate } from '../lib/index';
+import Alert from '@material-ui/lab/Alert';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import styles from './demo.module.css';
 
 const Result: React.FC<{ result: any }> = ({ result }) => {
   if (result) {
     return (
-      <div
-        style={{
-          background: result.valid ? 'green' : 'red',
-          color: 'white',
-          padding: 40,
-        }}
-      >
+      <Alert severity={result.valid ? 'success' : 'error'}>
         {result.valid ? 'VALID' : 'INVALID'}
         <br />
         {result.error ? result.error : ''}
-      </div>
+      </Alert>
     );
   }
   return null;
@@ -35,28 +33,37 @@ const Demo = () => {
     <div className={styles.demo}>
       <ol>
         <li>
-          Enter a browserslist "targets" value:
-          <br />
-          <input
-            type="text"
+          <TextField
+            style={{ width: '100%' }}
+            label={`Enter a browserslist "targets" value`}
+            variant="outlined"
             value={targets}
             onChange={(e) => setTargets(e.target.value)}
           />
         </li>
         <li>
-          Enter some javascript code:
-          <br />
-          <textarea value={code} onChange={(e) => setCode(e.target.value)} />
+          <TextField
+            style={{ width: '100%' }}
+            label={`Enter some javascript code`}
+            variant="outlined"
+            multiline
+            rows={6}
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+          />
         </li>
         <li>
-          Click the "validate" button:
-          <br />
-          <button data-testid="validate-button" onClick={handleValidate}>
+          <Button
+            variant="contained"
+            color="primary"
+            data-testid="validate-button"
+            onClick={handleValidate}
+          >
             validate
-          </button>
+          </Button>
         </li>
         <li>
-          View Results:
+          <Typography variant="h6">View Results:</Typography>
           <br />
           <Result result={result} />
         </li>
